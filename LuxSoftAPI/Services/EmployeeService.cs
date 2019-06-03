@@ -17,9 +17,9 @@ namespace Server.Services
             _empRepository = empRepository;
         }
 
-        public Task<EmployeeViewModel> GetEmployees(EmployeeDetailsModel emp)
+        public Task<EmployeeViewModel> GetEmployees(Pagination emp)
         {
-            var employeeInfo = _empRepository.GetEmployees(emp.Pagination.ItemsPerPage, emp.Pagination.CurrentPage).Result;
+            var employeeInfo = _empRepository.GetEmployees(emp.ItemsPerPage, emp.CurrentPage).Result;
             var empModel = new EmployeeViewModel(employeeInfo.dataList, employeeInfo.CurrentPage, employeeInfo.PageSize, employeeInfo.TotalCount, employeeInfo.TotalPages);
             return Task.FromResult<EmployeeViewModel>(empModel);
         }
@@ -38,7 +38,7 @@ namespace Server.Services
             }
             _empRepository.SaveAll();
 
-            return Task.Run(() => GetEmployees(Emp));
+            return Task.Run(() => GetEmployees(Emp.Pagination));
         }
 
         public Task<EmployeeViewModel> DeleteEmployee(EmployeeDetailsModel Emp)
@@ -48,7 +48,7 @@ namespace Server.Services
                 _empRepository.DeleteEmployee(employee);
             }
             _empRepository.SaveAll();
-            return Task.Run(() => GetEmployees(Emp));
+            return Task.Run(() => GetEmployees(Emp.Pagination));
         }
 
         public Task<EmployeeStatistics> GetStatistics()

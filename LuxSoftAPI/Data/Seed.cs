@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Server.Models;
 using Newtonsoft.Json;
+using LuxSoftAPI.Data;
 
 namespace Server.Data
 {
@@ -18,9 +19,7 @@ namespace Server.Data
         {
             if (!_context.Employees.Any())
             {
-                var employeeJsonData = System.IO.File.ReadAllText("Data/employeeSeedData.json");
-                var empData = JsonConvert.DeserializeObject<List<Employee>>(employeeJsonData);
-                foreach (var employeInfo in empData)
+                foreach (var employeInfo in InitialData.EmployeeList())
                 {
                     _context.Employees.Add(employeInfo);
                     _context.SaveChanges();

@@ -28,6 +28,24 @@ export class EmployeeChartComponent implements OnInit {
 
   }
 
+  public doughnutColors:Array<any>=[
+    { // dark grey
+         backgroundColor: '#F97300',
+         borderColor: '#F97300',
+         pointBackgroundColor: 'rgba(77,83,96,1)',
+         pointBorderColor: '#fff',
+         pointHoverBackgroundColor: '#fff',
+         pointHoverBorderColor: 'rgba(77,83,96,1)'
+       },
+       { // dark grey
+         backgroundColor: 'red',
+         borderColor: '#F97300',
+         pointBackgroundColor: 'rgba(77,83,96,1)',
+         pointBorderColor: '#fff',
+         pointHoverBackgroundColor: '#fff',
+         pointHoverBorderColor: 'rgba(77,83,96,1)'
+       }]; 
+
   ChartLabels = ['Deleted Employess', 'Current Employees'];
   ChartData = [0, 0];
   pie = 'pie';

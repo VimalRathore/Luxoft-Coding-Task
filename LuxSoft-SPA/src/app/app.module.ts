@@ -7,13 +7,14 @@ import { FormsModule } from '@angular/forms';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from './routes';
-import { AlertifyService } from './_services/alertify.service';
 import { AgGridModule } from 'ag-grid-angular';
 import { EmployeeService } from './_services/employee.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ChartsModule } from 'ng2-charts';
 import { EmployeeComponent } from './Employee/employee.component';
 import { EmployeeChartComponent } from './EmployeeChart/employeechart.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -32,11 +33,12 @@ import { EmployeeChartComponent } from './EmployeeChart/employeechart.component'
       RouterModule.forRoot(appRoutes),
       TabsModule.forRoot(),
       ChartsModule,
-      NgbModule.forRoot()
+      NgbModule.forRoot(),
+      BrowserAnimationsModule,
+      ToastrModule.forRoot()
    ],
    providers: [
       ErrorInterceptorProvider,
-      AlertifyService,
       EmployeeService
    ],
    bootstrap: [

@@ -3,10 +3,10 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { GridOptions } from 'ag-grid-community';
 import { Employee } from '../_models/employee';
 import { EmployeeService } from '../_services/employee.service';
-import { AlertifyService } from '../_services/alertify.service';
 import { Pagination, EmployeeViewModel } from '../_models/employeeViewModel';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { NgForm } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-employee',
@@ -26,7 +26,7 @@ export class EmployeeComponent implements OnInit {
 
   constructor(private http: HttpClient,
     private empService: EmployeeService,
-    private alertify: AlertifyService) {
+     private toastr: ToastrService) {
 
     this.model = new EmployeeViewModel();
     this.model.pagination.currentPage = 1;
@@ -48,8 +48,11 @@ export class EmployeeComponent implements OnInit {
 
   loadGrid() {
     this.empService.getAllEmployees(this.model).subscribe(
+    
       res => { this.rowData = res.employees; this.model.pagination = res.pagination },
-      error => { this.alertify.error(error); },
+      error => {
+        this.toastr.error('Hey, Some issue while geting employee details')
+       },
     );
   }
 
@@ -58,6 +61,7 @@ export class EmployeeComponent implements OnInit {
     this.gridColumnApi = params.columnApi;
   }
 
+  // tslint:disable-next-line:member-ordering
   columnDefs = [
     { headerName: 'Employee Id', field: 'id', editable:false, width: 100, suppressSizeToFit: true, sortable: true },
     { headerName: 'First Name', field: 'firstName', editable: true, width: 165, suppressSizeToFit: true, sortable: true },
@@ -69,17 +73,19 @@ export class EmployeeComponent implements OnInit {
   ];
 
   onRemoveSelected() {
+    // tslint:disable-next-line:prefer-const
     var selectedData = this.gridApi.getSelectedRows();
     
     if (selectedData.length < 1) {
-      this.alertify.error("Please select the records to be deleted.")
+      this.toastr.info('Please select the records to be deleted.');
       return;
     }
     this.model.employees = selectedData;
     this.empService.deleteAllEmployees(this.model).subscribe(
       res => { this.rowData = res.employees; this.model.pagination = res.pagination;
-      this.alertify.success("Employee deleted successfully") },
-      error => { this.alertify.error(error); },
+      this.toastr.info('Employee deleted successfully.'); },
+      // tslint:disable-next-line:no-unused-expression
+      error => { this.toastr.error(error); }
     );
   }
   onAddRow() {
@@ -88,8 +94,8 @@ export class EmployeeComponent implements OnInit {
     this.model.employees.push(this.newEmployee);
     this.empService.saveAllEmployees(this.model).subscribe(
       res => { this.rowData = res.employees; this.model.pagination = res.pagination;
-      this.alertify.success("Employee Added successfully") },
-      error => { this.alertify.error(error); },
+        this.toastr.success('Employee Added successfully'); },
+      error => { this.toastr.error(error); },
     );
     this.addForm.resetForm();
   }
@@ -99,8 +105,8 @@ export class EmployeeComponent implements OnInit {
     this.model.employees = this.rowData;
     this.empService.saveAllEmployees(this.model).subscribe(
       res => { this.rowData = res.employees; this.model.pagination = res.pagination;
-      this.alertify.success("Employee Saved successfully") },
-      error => { this.alertify.error(error); },
+      this.toastr.success('Employee Saved successfully') },
+      error => { this.toastr.error(error); },
     );
   }
 }
