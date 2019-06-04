@@ -7,6 +7,11 @@ import { Pagination, EmployeeViewModel } from '../_models/employeeViewModel';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { NgForm } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormModalComponent } from '../FormModal/FormModal.component';
+// import { Subscription } from 'rxjs';
+// import { Store, createAction } from '@ngrx/store';
+// import { EmployeeActions, GetEmployee } from '../Store/luxSoft.actions';
 
 @Component({
   selector: 'app-employee',
@@ -19,26 +24,34 @@ export class EmployeeComponent implements OnInit {
   private gridApi;
   private gridColumnApi;
   model: EmployeeViewModel;
-  gridOptions: GridOptions
+  gridOptions: GridOptions;
   rowData: Employee[];
-  @ViewChild('addForm') addForm : NgForm;
-  newEmployee:Employee= new Employee();
+  // private subscription: Subscription;
 
   constructor(private http: HttpClient,
     private empService: EmployeeService,
-     private toastr: ToastrService) {
+     private toastr: ToastrService
+      ,
+      private modalService: NgbModal
+    //  private store: Store<any>
+     ) {}
 
+   
+  
+
+  ngOnInit() {
     this.model = new EmployeeViewModel();
     this.model.pagination.currentPage = 1;
     this.model.pagination.itemsPerPage = 10;
-  }
-
-  ngOnInit() {
     this.loadGrid();
+
     this.gridOptions = {
-      pagination: false
-    }
+      pagination: false,
+    };
     this.rowSelection = "multiple";
+    // this.store.select(data => {
+    //   console.log(data);
+    // });
   }
 
   pageChanged(event: any): void {
@@ -47,13 +60,40 @@ export class EmployeeComponent implements OnInit {
   }
 
   loadGrid() {
-    this.empService.getAllEmployees(this.model).subscribe(
-    
+    this.empService.getAllEmployees(this.model.pagination).subscribe(
       res => { this.rowData = res.employees; this.model.pagination = res.pagination },
       error => {
         this.toastr.error('Hey, Some issue while geting employee details')
        },
     );
+  }
+  // loadGrid() {
+  //   const result = this.empService.getAllEmployees(this.model).subscribe(
+  // res => { this.rowData = res.employees; this.model.pagination = res.pagination;
+  //    this.store.dispatch(new GetEmployee(this.rowData[0]));
+  // },
+  //     error => {
+  //       this.toastr.error('Hey, Some issue while geting employee details');
+  //      },
+  //   );
+  // }
+
+  openFormModal() {
+    const modalRef = this.modalService.open(FormModalComponent);
+
+    modalRef.result.then((result) => {
+
+        this.model.employees = new Array<Employee>();
+        this.model.employees.push(result);
+       this.empService.saveAllEmployees(this.model).subscribe(
+         res => { this.rowData = res.employees; this.model.pagination = res.pagination;
+          this.toastr.success('Employee Added successfully'); },
+       error => { this.toastr.error(error); },
+       );
+      console.log(result);
+    }).catch((error) => {
+      console.log(error);
+    });
   }
 
   onGridReady(params) {
@@ -75,7 +115,6 @@ export class EmployeeComponent implements OnInit {
   onRemoveSelected() {
     // tslint:disable-next-line:prefer-const
     var selectedData = this.gridApi.getSelectedRows();
-    
     if (selectedData.length < 1) {
       this.toastr.info('Please select the records to be deleted.');
       return;
@@ -83,29 +122,18 @@ export class EmployeeComponent implements OnInit {
     this.model.employees = selectedData;
     this.empService.deleteAllEmployees(this.model).subscribe(
       res => { this.rowData = res.employees; this.model.pagination = res.pagination;
-      this.toastr.info('Employee deleted successfully.'); },
-      // tslint:disable-next-line:no-unused-expression
+      this.toastr.success('Employee deleted successfully.'); },
       error => { this.toastr.error(error); }
     );
   }
-  onAddRow() {
-    this.newEmployee.id = 0;
-    this.model.employees = new Array<Employee>();
-    this.model.employees.push(this.newEmployee);
-    this.empService.saveAllEmployees(this.model).subscribe(
-      res => { this.rowData = res.employees; this.model.pagination = res.pagination;
-        this.toastr.success('Employee Added successfully'); },
-      error => { this.toastr.error(error); },
-    );
-    this.addForm.resetForm();
-  }
 
-  onUpdate(){
+
+  onUpdate() {
     this.model.employees = new Array<Employee>();
     this.model.employees = this.rowData;
     this.empService.saveAllEmployees(this.model).subscribe(
       res => { this.rowData = res.employees; this.model.pagination = res.pagination;
-      this.toastr.success('Employee Saved successfully') },
+      this.toastr.success('Employee Saved successfully'); },
       error => { this.toastr.error(error); },
     );
   }

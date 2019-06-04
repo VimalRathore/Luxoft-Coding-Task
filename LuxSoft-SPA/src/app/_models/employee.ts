@@ -1,14 +1,14 @@
 export class Employee {
-  constructor(){
+  constructor() {
   }
   id: number;
   firstName: string;
   lastName: string;
   age: number;
   gender: string;
-  createdDate:Date;
-  modifiedDate:Date;
-  yearOfJoining:number;
+  createdDate: Date;
+  modifiedDate: Date;
+  yearOfJoining: number;
   phoneNumber: string;
   email: string;
   city: string;

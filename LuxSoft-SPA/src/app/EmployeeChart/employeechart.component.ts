@@ -28,7 +28,8 @@ export class EmployeeChartComponent implements OnInit {
 
   }
 
-  public doughnutColors:Array<any>=[
+  // tslint:disable-next-line:member-ordering
+  public doughnutColors:Array<any>= [
     { // dark grey
          backgroundColor: '#F97300',
          borderColor: '#F97300',
@@ -46,9 +47,13 @@ export class EmployeeChartComponent implements OnInit {
          pointHoverBorderColor: 'rgba(77,83,96,1)'
        }]; 
 
+  // tslint:disable-next-line:member-ordering
   ChartLabels = ['Deleted Employess', 'Current Employees'];
+  // tslint:disable-next-line:member-ordering
   ChartData = [0, 0];
+  // tslint:disable-next-line:member-ordering
   pie = 'pie';
+  // tslint:disable-next-line:member-ordering
   doughnut = 'doughnut';
 
   // event on pie chart slice hover
@@ -56,11 +61,13 @@ export class EmployeeChartComponent implements OnInit {
     console.log(e);
   }
 
+  // tslint:disable-next-line:member-ordering
   public barChartOptions = {
     scaleShowVerticalLines: false,
     responsive: true
   };
 
+  // tslint:disable-next-line:member-ordering
   public barChartLabels : string[];
   public barChartType = 'bar';
   public barChartLegend = true;

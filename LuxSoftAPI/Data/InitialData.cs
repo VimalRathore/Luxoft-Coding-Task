@@ -18,7 +18,9 @@ namespace LuxSoftAPI.Data
                     Gender = "Male",
                     FirstName = "Vimal",
                     LastName = "Singh",
-                    PhoneNumber = "8050480140"
+                    PhoneNumber = "8050480140",
+                    YearOfJoining = 2018,
+                    
                 },
                  new Employee()
                 {
@@ -29,7 +31,8 @@ namespace LuxSoftAPI.Data
                     Gender = "Male",
                     FirstName = "Vimal",
                     LastName = "Singh",
-                    PhoneNumber = "8050480140"
+                    PhoneNumber = "8050480140",
+                     YearOfJoining = 2013,
                 },
                   new Employee()
                 {
@@ -40,7 +43,8 @@ namespace LuxSoftAPI.Data
                     Gender = "Male",
                     FirstName = "Vimal",
                     LastName = "Singh",
-                    PhoneNumber = "8050480140"
+                    PhoneNumber = "8050480140",
+                     YearOfJoining = 2011,
                 }
                 };
                  return emplyeeList;

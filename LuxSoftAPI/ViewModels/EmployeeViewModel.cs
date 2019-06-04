@@ -20,8 +20,8 @@ namespace Server.ViewModels
 
     public class Pagination
     {
-        public int CurrentPage { get; set; } = 1;
-        public int ItemsPerPage { get; set; } = 5;
+        public int CurrentPage { get; set; }
+        public int ItemsPerPage { get; set; }
         public int TotalItems { get; set; }
         public int TotalPages { get; set; }
     }
