@@ -32,7 +32,7 @@ namespace LuxSoftAPI.Data
                     FirstName = "Vimal",
                     LastName = "Singh",
                     PhoneNumber = "8050480140",
-                     YearOfJoining = 2013,
+                    YearOfJoining = 2013,
                 },
                   new Employee()
                 {

@@ -29,12 +29,11 @@ namespace Server
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
-
-        public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.P
         public void ConfigureServices(IServiceCollection services)
@@ -43,19 +42,20 @@ namespace Server
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IEmployeeService, EmployeeService>();
 
-            services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<NorthwindContext>(options =>
+            options.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;DataBase=Northwind;Integrated Security=True;Connect Timeout=30"));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1).AddJsonOptions(opt =>
             opt.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 
-            services.BuildServiceProvider().GetService<DataContext>().Database.EnsureCreated();
+            services.BuildServiceProvider().GetService<NorthwindContext>().Database.EnsureCreated();
             services.AddCors();
             services.AddAutoMapper();
 
-
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info { Title = "Coding Task API", Version = "v1" });
+                c.SwaggerDoc("v1", new Info { Title = "Lux-Soft App API Test", Version = "v1" });
             });
         }
 

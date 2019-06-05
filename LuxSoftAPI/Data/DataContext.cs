@@ -1,13 +1,13 @@
-using Microsoft.EntityFrameworkCore;
-using Server.Models;
+// using Microsoft.EntityFrameworkCore;
+// using Server.Models;
 
-namespace Server.Data
-{
-    public class DataContext : DbContext
-    {
+// namespace Server.Data
+// {
+//     public class DataContext : DbContext
+//     {
       
-        public DataContext(DbContextOptions<DataContext> options): base(options){
-        }
-        public DbSet<Employee> Employees{get;set;}
-    }
-}
+//         public DataContext(DbContextOptions<DataContext> options): base(options){
+//         }
+//         public DbSet<Employee> Employees{get;set;}
+//     }
+// }

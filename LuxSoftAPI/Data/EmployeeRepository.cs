@@ -10,22 +10,34 @@ namespace Server.Data
 {
     public class EmployeeRepository : IEmployeeRepository
     {
-        private readonly DataContext _context;
-        public EmployeeRepository(DataContext context)
+        //private readonly DataContext _context;
+        private readonly NorthwindContext _northwindContext;
+        // public EmployeeRepository(DataContext context)
+        // {
+        //     _context = context;
+        // }
+
+        public EmployeeRepository(NorthwindContext northwindContext)
         {
-            _context = context;
+            _northwindContext = northwindContext;
         }
 
-        public async Task<PagedList<Employee>> GetEmployees(int recordsPerPage, int pageNumber)
+        public IQueryable<Employee> GetEmployees()
         {
-            var employees = _context.Employees.Where(x => !x.IsDeleted);
-            return await PagedList<Employee>.CreateAsync(employees,pageNumber,recordsPerPage);
+            return _northwindContext.Employees.Where(x => !x.IsDeleted).AsQueryable();
         }
-        public void AddEmployee(Employee Emp)
+        // public async void AddEmployee(Employee Emp)
+        // {
+        //     Emp.YearOfJoining = DateTime.Now.Year;
+        //     Emp.CreatedDate = DateTime.Now;
+        //     _northwindContext.Add(Emp);
+        // }
+
+          public void AddEmployee(Employee Emp)
         {
             Emp.YearOfJoining = DateTime.Now.Year;
             Emp.CreatedDate = DateTime.Now;
-            _context.Add(Emp);
+            _northwindContext.Add(Emp);
         }
 
         public void DeleteEmployee(Employee Emp)
@@ -37,17 +49,19 @@ namespace Server.Data
         public void UpdateEmployee(Employee Emp)
         {
             Emp.ModifiedDate = DateTime.Now;
-            _context.Update(Emp);
+            _northwindContext.Update(Emp);
         }
 
         public async Task<bool> SaveAll()
         {
-            return await _context.SaveChangesAsync() > 0;
+            return await _northwindContext.SaveChangesAsync() > 0;
         }
 
         public IQueryable<Employee> GetEmployeesForStats()
         {
-            return _context.Employees;
+            return _northwindContext.Employees;
         }
+
+       
     }
 }

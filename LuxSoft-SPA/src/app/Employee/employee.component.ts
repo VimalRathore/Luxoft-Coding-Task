@@ -30,14 +30,14 @@ export class EmployeeComponent implements OnInit {
 
   constructor(private http: HttpClient,
     private empService: EmployeeService,
-     private toastr: ToastrService
-      ,
-      private modalService: NgbModal
+    private toastr: ToastrService
+    ,
+    private modalService: NgbModal
     //  private store: Store<any>
-     ) {}
+  ) { }
 
-   
-  
+
+
 
   ngOnInit() {
     this.model = new EmployeeViewModel();
@@ -64,7 +64,7 @@ export class EmployeeComponent implements OnInit {
       res => { this.rowData = res.employees; this.model.pagination = res.pagination },
       error => {
         this.toastr.error('Hey, Some issue while geting employee details')
-       },
+      },
     );
   }
   // loadGrid() {
@@ -83,14 +83,17 @@ export class EmployeeComponent implements OnInit {
 
     modalRef.result.then((result) => {
 
-        this.model.employees = new Array<Employee>();
-        this.model.employees.push(result);
-       this.empService.saveAllEmployees(this.model).subscribe(
-         res => { this.rowData = res.employees; this.model.pagination = res.pagination;
-          this.toastr.success('Employee Added successfully'); },
-       error => { this.toastr.error(error); },
-       );
-      console.log(result);
+      this.model.employees = new Array<Employee>();
+      this.model.employees.push(result);
+      this.empService.saveAllEmployees(this.model).subscribe(
+        res => {
+          if (res) {
+            this.toastr.success('Employee Added successfully');
+          }
+        },
+        error => { this.toastr.error(error); },
+        () => { this.loadGrid(); }
+      );
     }).catch((error) => {
       console.log(error);
     });
@@ -103,7 +106,7 @@ export class EmployeeComponent implements OnInit {
 
   // tslint:disable-next-line:member-ordering
   columnDefs = [
-    { headerName: 'Employee Id', field: 'id', editable:false, width: 100, suppressSizeToFit: true, sortable: true },
+    { headerName: 'Employee Id', field: 'id', editable: false, width: 100, suppressSizeToFit: true, sortable: true },
     { headerName: 'First Name', field: 'firstName', editable: true, width: 165, suppressSizeToFit: true, sortable: true },
     { headerName: 'Last Name', field: 'lastName', editable: true, width: 165, suppressSizeToFit: true, sortable: true },
     { headerName: 'Age', field: 'age', editable: true, width: 80, suppressSizeToFit: true, sortable: true },
@@ -121,10 +124,16 @@ export class EmployeeComponent implements OnInit {
     }
     this.model.employees = selectedData;
     this.empService.deleteAllEmployees(this.model).subscribe(
-      res => { this.rowData = res.employees; this.model.pagination = res.pagination;
-      this.toastr.success('Employee deleted successfully.'); },
-      error => { this.toastr.error(error); }
+      res => {
+        if (res) {
+          this.toastr.success('Employee deleted successfully.');
+        }
+      },
+      error => { this.toastr.error(error); },
+      () => { this.loadGrid(); }
     );
+
+
   }
 
 
@@ -132,10 +141,16 @@ export class EmployeeComponent implements OnInit {
     this.model.employees = new Array<Employee>();
     this.model.employees = this.rowData;
     this.empService.saveAllEmployees(this.model).subscribe(
-      res => { this.rowData = res.employees; this.model.pagination = res.pagination;
-      this.toastr.success('Employee Saved successfully'); },
+      res => {
+        if (res) {
+          this.toastr.success('Employee Saved successfully');
+        }
+      },
       error => { this.toastr.error(error); },
+      () => { this.loadGrid(); }
     );
+
+
   }
 }
 

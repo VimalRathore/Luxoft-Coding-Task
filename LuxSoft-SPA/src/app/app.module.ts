@@ -16,9 +16,9 @@ import { EmployeeChartComponent } from './EmployeeChart/employeechart.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { FormModalComponent } from './FormModal/FormModal.component';
-import { Store } from '@ngrx/store';
-import { StoreModule } from '@ngrx/store';
-import { employeeReducers } from './Store/luxSoft.reducer';
+// import { Store } from '@ngrx/store';
+// import { StoreModule } from '@ngrx/store';
+// import { employeeReducers } from './Store/luxSoft.reducer';
 @NgModule({
    declarations: [
       AppComponent,

@@ -8,7 +8,7 @@ namespace Server.Data
 {
     public interface IEmployeeRepository
     {
-        Task<PagedList<Employee>> GetEmployees(int recordsPerPage, int pageNumber);
+        IQueryable<Employee> GetEmployees();
         void AddEmployee(Employee Emp);
         void UpdateEmployee(Employee Emp);
         void DeleteEmployee(Employee Emp);

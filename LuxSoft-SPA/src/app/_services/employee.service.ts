@@ -25,7 +25,7 @@ export class EmployeeService {
       }))
   };
 
-  saveAllEmployees(model: any):Observable<EmployeeViewModel> {
+  saveAllEmployees(model: any):Observable<boolean> {
     return this.http.post(this.baseUrl + '/save-employees', model).pipe(
       map((response: any) => {
         if (response) {
@@ -35,7 +35,7 @@ export class EmployeeService {
     )
   };
 
-  deleteAllEmployees(model: any):Observable<EmployeeViewModel> {
+  deleteAllEmployees(model: any):Observable<boolean> {
     return this.http.post(this.baseUrl + '/delete-employees', model).pipe(
       map((response: any) => {
         if (response) {

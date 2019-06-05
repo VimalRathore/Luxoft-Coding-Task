@@ -45,15 +45,11 @@ export class EmployeeChartComponent implements OnInit {
          pointBorderColor: '#fff',
          pointHoverBackgroundColor: '#fff',
          pointHoverBorderColor: 'rgba(77,83,96,1)'
-       }]; 
+       }];
 
-  // tslint:disable-next-line:member-ordering
   ChartLabels = ['Deleted Employess', 'Current Employees'];
-  // tslint:disable-next-line:member-ordering
   ChartData = [0, 0];
-  // tslint:disable-next-line:member-ordering
   pie = 'pie';
-  // tslint:disable-next-line:member-ordering
   doughnut = 'doughnut';
 
   // event on pie chart slice hover

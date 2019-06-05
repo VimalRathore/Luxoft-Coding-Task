@@ -9,20 +9,21 @@ namespace Server.Data
 {
     public class Seed
     {
-        private DataContext _context;
-        public Seed(DataContext context)
+        //private DataContext _context;
+        private NorthwindContext _northwindContext;
+        public Seed( NorthwindContext northwindContext)
         {
-            _context = context;
+            _northwindContext = northwindContext;
         }
 
         public void SeedUsers()
         {
-            if (!_context.Employees.Any())
+            if (!_northwindContext.Employees.Any())
             {
                 foreach (var employeInfo in InitialData.EmployeeList())
                 {
-                    _context.Employees.Add(employeInfo);
-                    _context.SaveChanges();
+                    _northwindContext.Employees.Add(employeInfo);
+                    _northwindContext.SaveChanges();
                 }
             }
         }

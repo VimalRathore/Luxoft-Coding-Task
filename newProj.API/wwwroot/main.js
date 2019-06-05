@@ -329,7 +329,7 @@ module.exports = ".btn{\r\n    margin-left: 5px;\r\n}\r\n.space-top{\r\n    marg
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h4 class=\"header\" style=\"margin-left: -700px\">\r\n Employee Details Grid\r\n</h4>\r\n<div class=\"container\">\r\n\r\n    <div>\r\n      <form #addForm=\"ngForm\" class=\"form-inline\" (ngSubmit)=\"onAddRow()\">\r\n        <input class=\"form-control\" type=\"text\" [(ngModel)]=\"newEmployee.firstName\" name=\"firstName\" required placeholder=\"First Name\">\r\n        <input class=\"form-control\" type=\"text\" [(ngModel)]=\"newEmployee.lastName\" name=\"lastName\" required placeholder=\"Last Name\">\r\n        <input class=\"form-control\" type=\"text\" [(ngModel)]=\"newEmployee.age\" name=\"age\" required placeholder=\"Age\">\r\n        <input class=\"form-control\" type=\"text\" [(ngModel)]=\"newEmployee.gender\" name=\"gender\" required placeholder=\"Gender\">\r\n        <input class=\"form-control\" type=\"text\" [(ngModel)]=\"newEmployee.city\" name=\"city\" required placeholder=\"City\">\r\n        <input class=\"form-control\" type=\"text\" [(ngModel)]=\"newEmployee.country\" name=\"country\" required placeholder=\"Country\">\r\n        <button [disabled]=\"!addForm.valid\" class=\"btn btn-success\" type=\"submit\">\r\n          <i class=\"fa fa-plus\"></i> Add</button>\r\n        <button type=\"button\" class=\"btn btn-light\" (click)=\"onUpdate()\">\r\n          <i class=\"fa fa-save\"></i> Save\r\n        </button>\r\n        <button type=\"button\" class=\"btn btn-outline-danger\" (click)=\"onRemoveSelected()\">\r\n          <i class=\"fa fa-trash\"></i> Delete\r\n        </button>\r\n      </form>\r\n    </div>\r\n    <div>\r\n      <ag-grid-angular class=\"ag-theme-balham\" style=\"height: 250px;width:100%;margin: 5px\" [rowData]=\"rowData\" [columnDefs]=\"columnDefs\"\r\n        [gridOptions]=\"gridOptions\" [rowSelection]=\"rowSelection\" (gridReady)=\"onGridReady($event)\">\r\n      </ag-grid-angular>\r\n    </div>\r\n    <div class=\"d-flex justify-content-center space-top\">\r\n      <pagination [boundaryLinks]=\"true\" [totalItems]=\"model.pagination.totalItems\" [itemsPerPage]=\"model.pagination.itemsPerPage\"\r\n        [(ngModel)]=\"model.pagination.currentPage\" (pageChanged)=\"pageChanged($event)\" [maxSize]=5 previousText=\"Previous\"\r\n        nextText=\"Next\" firstText=\"First\" lastText=\"Last\">\r\n      </pagination>\r\n    </div>\r\n  </div>"
+module.exports = "<div class=\"container\">\r\n<div style=\"text-align: right; margin-top: 10px;\">\r\n    <button class=\"btn btn-info\" (click)=\"openFormModal()\">Add Employee</button>\r\n    <button type=\"button\" class=\"btn btn-info\" (click)=\"onUpdate()\">\r\n        <i class=\"fa fa-save\"></i> Save\r\n      </button>\r\n      <button type=\"button\" class=\"btn btn-danger\" (click)=\"onRemoveSelected()\">\r\n        <i class=\"fa fa-trash\"></i> Delete\r\n      </button>\r\n     \r\n    </div>\r\n    <div>\r\n     \r\n      <ag-grid-angular class=\"ag-theme-dark\" style=\"height: 250px;width:100%;margin: 5px\" [rowData]=\"rowData\" [columnDefs]=\"columnDefs\"\r\n        [gridOptions]=\"gridOptions\" [rowSelection]=\"rowSelection\" (gridReady)=\"onGridReady($event)\">\r\n      </ag-grid-angular>\r\n    </div>\r\n    <div class=\"d-flex justify-content-center space-top\">\r\n      <pagination paginationAutoPageSize = \"true\" [boundaryLinks]=\"true\" [totalItems]=\"model.pagination.totalItems\" [itemsPerPage]=\"model.pagination.itemsPerPage\"\r\n        [(ngModel)]=\"model.pagination.currentPage\" (pageChanged)=\"pageChanged($event)\" [maxSize]=5 previousText=\"<\"\r\n        nextText=\">\" firstText=\"<<\" lastText=\">>\">\r\n      </pagination>\r\n    </div>\r\n  \r\n  </div>\r\n  "
 
 /***/ }),
 
@@ -345,11 +345,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EmployeeComponent", function() { return EmployeeComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
-/* harmony import */ var _models_employee__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../_models/employee */ "./src/app/_models/employee.ts");
-/* harmony import */ var _services_employee_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../_services/employee.service */ "./src/app/_services/employee.service.ts");
-/* harmony import */ var _models_employeeViewModel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../_models/employeeViewModel */ "./src/app/_models/employeeViewModel.ts");
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
+/* harmony import */ var _services_employee_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../_services/employee.service */ "./src/app/_services/employee.service.ts");
+/* harmony import */ var _models_employeeViewModel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../_models/employeeViewModel */ "./src/app/_models/employeeViewModel.ts");
+/* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
+/* harmony import */ var _FormModal_FormModal_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../FormModal/FormModal.component */ "./src/app/FormModal/FormModal.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -366,12 +366,18 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+// import { Subscription } from 'rxjs';
+// import { Store, createAction } from '@ngrx/store';
+// import { EmployeeActions, GetEmployee } from '../Store/luxSoft.actions';
 var EmployeeComponent = /** @class */ (function () {
-    function EmployeeComponent(http, empService, toastr) {
+    // private subscription: Subscription;
+    function EmployeeComponent(http, empService, toastr, modalService
+    //  private store: Store<any>
+    ) {
         this.http = http;
         this.empService = empService;
         this.toastr = toastr;
-        this.newEmployee = new _models_employee__WEBPACK_IMPORTED_MODULE_2__["Employee"]();
+        this.modalService = modalService;
         // tslint:disable-next-line:member-ordering
         this.columnDefs = [
             { headerName: 'Employee Id', field: 'id', editable: false, width: 100, suppressSizeToFit: true, sortable: true },
@@ -382,25 +388,54 @@ var EmployeeComponent = /** @class */ (function () {
             { headerName: 'City', field: 'city', editable: true, width: 160, suppressSizeToFit: true, sortable: true },
             { headerName: 'Country', field: 'country', editable: true, width: 160, suppressSizeToFit: true, sortable: true },
         ];
-        this.model = new _models_employeeViewModel__WEBPACK_IMPORTED_MODULE_4__["EmployeeViewModel"]();
-        this.model.pagination.currentPage = 1;
-        this.model.pagination.itemsPerPage = 10;
     }
     EmployeeComponent.prototype.ngOnInit = function () {
+        this.model = new _models_employeeViewModel__WEBPACK_IMPORTED_MODULE_3__["EmployeeViewModel"]();
+        this.model.pagination.currentPage = 1;
+        this.model.pagination.itemsPerPage = 10;
         this.loadGrid();
         this.gridOptions = {
-            pagination: false
+            pagination: false,
         };
         this.rowSelection = "multiple";
+        // this.store.select(data => {
+        //   console.log(data);
+        // });
     };
     EmployeeComponent.prototype.pageChanged = function (event) {
         this.model.pagination.currentPage = event.page;
-        this.loadGrid();
+        //this.loadGrid();
     };
     EmployeeComponent.prototype.loadGrid = function () {
         var _this = this;
-        this.empService.getAllEmployees(this.model).subscribe(function (res) { _this.rowData = res.employees; _this.model.pagination = res.pagination; }, function (error) {
+        this.empService.getAllEmployees(this.model.pagination).subscribe(function (res) { _this.rowData = res.employees; _this.model.pagination = res.pagination; }, function (error) {
             _this.toastr.error('Hey, Some issue while geting employee details');
+        });
+    };
+    // loadGrid() {
+    //   const result = this.empService.getAllEmployees(this.model).subscribe(
+    // res => { this.rowData = res.employees; this.model.pagination = res.pagination;
+    //    this.store.dispatch(new GetEmployee(this.rowData[0]));
+    // },
+    //     error => {
+    //       this.toastr.error('Hey, Some issue while geting employee details');
+    //      },
+    //   );
+    // }
+    EmployeeComponent.prototype.openFormModal = function () {
+        var _this = this;
+        var modalRef = this.modalService.open(_FormModal_FormModal_component__WEBPACK_IMPORTED_MODULE_6__["FormModalComponent"]);
+        modalRef.result.then(function (result) {
+            _this.model.employees = new Array();
+            _this.model.employees.push(result);
+            _this.empService.saveAllEmployees(_this.model).subscribe(function (res) {
+                _this.rowData = res.employees;
+                _this.model.pagination = res.pagination;
+                _this.toastr.success('Employee Added successfully');
+            }, function (error) { _this.toastr.error(error); });
+            console.log(result);
+        }).catch(function (error) {
+            console.log(error);
         });
     };
     EmployeeComponent.prototype.onGridReady = function (params) {
@@ -419,22 +454,9 @@ var EmployeeComponent = /** @class */ (function () {
         this.empService.deleteAllEmployees(this.model).subscribe(function (res) {
             _this.rowData = res.employees;
             _this.model.pagination = res.pagination;
-            _this.toastr.info('Employee deleted successfully.');
-        }, 
-        // tslint:disable-next-line:no-unused-expression
-        function (error) { _this.toastr.error(error); });
-    };
-    EmployeeComponent.prototype.onAddRow = function () {
-        var _this = this;
-        this.newEmployee.id = 0;
-        this.model.employees = new Array();
-        this.model.employees.push(this.newEmployee);
-        this.empService.saveAllEmployees(this.model).subscribe(function (res) {
-            _this.rowData = res.employees;
-            _this.model.pagination = res.pagination;
-            _this.toastr.success('Employee Added successfully');
+            _this.toastr.success('Employee deleted successfully.');
         }, function (error) { _this.toastr.error(error); });
-        this.addForm.resetForm();
+        this.loadGrid();
     };
     EmployeeComponent.prototype.onUpdate = function () {
         var _this = this;
@@ -445,11 +467,8 @@ var EmployeeComponent = /** @class */ (function () {
             _this.model.pagination = res.pagination;
             _this.toastr.success('Employee Saved successfully');
         }, function (error) { _this.toastr.error(error); });
+        this.loadGrid();
     };
-    __decorate([
-        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('addForm'),
-        __metadata("design:type", _angular_forms__WEBPACK_IMPORTED_MODULE_5__["NgForm"])
-    ], EmployeeComponent.prototype, "addForm", void 0);
     EmployeeComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-employee',
@@ -457,8 +476,11 @@ var EmployeeComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./employee.component.css */ "./src/app/Employee/employee.component.css")]
         }),
         __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"],
-            _services_employee_service__WEBPACK_IMPORTED_MODULE_3__["EmployeeService"],
-            ngx_toastr__WEBPACK_IMPORTED_MODULE_6__["ToastrService"]])
+            _services_employee_service__WEBPACK_IMPORTED_MODULE_2__["EmployeeService"],
+            ngx_toastr__WEBPACK_IMPORTED_MODULE_4__["ToastrService"],
+            _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModal"]
+            //  private store: Store<any>
+        ])
     ], EmployeeComponent);
     return EmployeeComponent;
 }());
@@ -485,7 +507,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"col-md-6\">\r\n      <canvas baseChart [data]=\"ChartData\" [labels]=\"ChartLabels\"  [chartType]=\"pie\"></canvas>\r\n      <h4 style=\"text-align:center\">Pie Chart</h4>\r\n    </div>\r\n    <div class=\"col-md-6\">\r\n      <canvas baseChart [data]=\"ChartData\" [labels]=\"ChartLabels\"   [chartType]=\"doughnut\"></canvas>\r\n      <h4 style=\"text-align:center\">Doughnut Chart</h4>\r\n    </div>\r\n  </div>\r\n  <div class=\"row\">\r\n      <div class=\"col-md-12\" style=\"display: block;margin-top:100px\">\r\n        <canvas baseChart\r\n              [datasets]=\"barChartData\"\r\n              [labels]=\"barChartLabels\"\r\n              [options]=\"barChartOptions\"\r\n              [legend]=\"barChartLegend\"\r\n              [chartType]=\"barChartType\"\r\n              [colors]=\"doughnutColors\">\r\n            </canvas>\r\n              <h4 style=\"text-align:center\">Bar Chart</h4>\r\n      </div>\r\n    </div>\r\n    \r\n\r\n</div>"
+module.exports = "<div class=\"container\">\r\n\r\n    <div class=\"row\">\r\n        <div class=\"col-md-12\" style=\"display: block;margin-top:10px\">\r\n            <h5 style=\"text-align:center\">Bar Chart</h5>\r\n          <canvas baseChart\r\n                [datasets]=\"barChartData\"\r\n                [labels]=\"barChartLabels\"\r\n                [options]=\"barChartOptions\"\r\n                [legend]=\"barChartLegend\"\r\n                [chartType]=\"barChartType\"\r\n                [colors]=\"doughnutColors\">\r\n              </canvas>\r\n        </div>\r\n      </div>\r\n  <div class=\"row\">\r\n    <div class=\"col-md-6\">\r\n        <h5 style=\"text-align:center; margin-top: 10px;\">Pie Chart</h5>\r\n      <canvas baseChart [data]=\"ChartData\" [labels]=\"ChartLabels\"  [chartType]=\"pie\"></canvas>\r\n    \r\n    </div>\r\n    <div class=\"col-md-6\">\r\n        <h5 style=\"text-align:center; margin-top: 10px;\">Doughnut Chart</h5>\r\n      <canvas baseChart [data]=\"ChartData\" [labels]=\"ChartLabels\"   [chartType]=\"doughnut\"></canvas>\r\n    </div>\r\n  </div>\r\n\r\n    \r\n\r\n</div>"
 
 /***/ }),
 
@@ -517,6 +539,7 @@ var EmployeeChartComponent = /** @class */ (function () {
         this.empService = empService;
         this.existingEmployee = 0;
         this.quitEmployee = 0;
+        // tslint:disable-next-line:member-ordering
         this.doughnutColors = [
             {
                 backgroundColor: '#F97300',
@@ -539,6 +562,7 @@ var EmployeeChartComponent = /** @class */ (function () {
         this.ChartData = [0, 0];
         this.pie = 'pie';
         this.doughnut = 'doughnut';
+        // tslint:disable-next-line:member-ordering
         this.barChartOptions = {
             scaleShowVerticalLines: false,
             responsive: true
@@ -572,6 +596,93 @@ var EmployeeChartComponent = /** @class */ (function () {
         __metadata("design:paramtypes", [_services_employee_service__WEBPACK_IMPORTED_MODULE_1__["EmployeeService"]])
     ], EmployeeChartComponent);
     return EmployeeChartComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/FormModal/FormModal.component.css":
+/*!***************************************************!*\
+  !*** ./src/app/FormModal/FormModal.component.css ***!
+  \***************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ""
+
+/***/ }),
+
+/***/ "./src/app/FormModal/FormModal.component.html":
+/*!****************************************************!*\
+  !*** ./src/app/FormModal/FormModal.component.html ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<link href=\"//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css\" rel=\"stylesheet\" id=\"bootstrap-css\">\n<script src=\"//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js\"></script>\n<script src=\"//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js\"></script>\n<!------ Include the above in your HEAD tag ---------->\n\n<link rel=\"stylesheet\" href=\"https://use.fontawesome.com/releases/v5.0.8/css/all.css\">\n\n<div class=\"container\">\n<hr>\n<div class=\"card bg-light\">\n<article class=\"card-body mx-auto\" style=\"max-width: 300px;\">\n\t<h4 class=\"card-title mt-3 text-center\">Add New Employee</h4>\n    <form #addForm=\"ngForm\"  (ngSubmit)=\"submitForm()\">\n\t<div class=\"form-group input-group\">\n\t\t<div class=\"input-group-prepend\">\n\t\t    <span class=\"input-group-text\"> <i class=\"fa fa-user\"></i> </span>\n\t\t </div>\n     <input class=\"form-control\" type=\"text\" [(ngModel)]=\"newEmployee.firstName\" name=\"firstName\" required placeholder=\"First Name\">\n    </div>\n    <div class=\"form-group input-group\">\n        <div class=\"input-group-prepend\">\n            <span class=\"input-group-text\"> <i class=\"fa fa-user\"></i> </span>\n         </div>\n         <input class=\"form-control\" type=\"text\" [(ngModel)]=\"newEmployee.lastName\" name=\"lastName\" required placeholder=\"Last Name\">\n        </div>\n        <div class=\"form-group input-group\">\n            <div class=\"input-group-prepend\">\n                <span class=\"input-group-text\"> <i class=\"fa fa-user\"></i> </span>\n             </div>\n             <input class=\"form-control\" type=\"text\" [(ngModel)]=\"newEmployee.age\" name=\"age\" required placeholder=\"Age\">\n            </div>\n            <div class=\"form-group input-group\">\n                <div class=\"input-group-prepend\">\n                    <span class=\"input-group-text\"> <i class=\"fa fa-user\"></i> </span>\n                 </div>\n                 <input class=\"form-control\" type=\"text\" [(ngModel)]=\"newEmployee.gender\" name=\"gender\" required placeholder=\"Gender\">\n                </div>\n                <div class=\"form-group input-group\">\n                    <div class=\"input-group-prepend\">\n                        <span class=\"input-group-text\"> <i class=\"fa fa-location-arrow\"></i> </span>\n                     </div>\n                     <input class=\"form-control\" type=\"text\" [(ngModel)]=\"newEmployee.city\" name=\"city\" required placeholder=\"City\">\n                    </div>\n                    <div class=\"form-group input-group\">\n                        <div class=\"input-group-prepend\">\n                            <span class=\"input-group-text\"> <i class=\"fa fa-location-arrow\"></i> </span>\n                         </div>\n                         <input class=\"form-control\" type=\"text\" [(ngModel)]=\"newEmployee.city\" name=\"city\" required placeholder=\"City\">\n                        </div>\n                        <div class=\"form-group input-group\">\n                            <div class=\"input-group-prepend\">\n                                <span class=\"input-group-text\"> <i class=\"fa fa-location-arrow\"></i> </span>\n                             </div>\n                             <input class=\"form-control\" type=\"text\" [(ngModel)]=\"newEmployee.country\" name=\"country\" required placeholder=\"Country\">\n                            </div>\n    <div class=\"form-group input-group\">\n    \t<div class=\"input-group-prepend\">\n\t\t    <span class=\"input-group-text\"> <i class=\"fa fa-envelope\"></i> </span>\n\t\t </div>\n        <input class=\"form-control\" type=\"email\" [(ngModel)]=\"newEmployee.email\" name=\"Email\" required placeholder=\"Email address\">\n    </div> \n   \n   \n                                       \n    <div class=\"form-group\">\n        <button [disabled]=\"!addForm.valid\" class=\"btn btn-success\" type=\"submit\">\n            <i class=\"fa fa-plus\"></i> Add Employee</button>\n    </div>                                                                    \n</form>\n</article>\n</div>\n\n</div> \n\n  "
+
+/***/ }),
+
+/***/ "./src/app/FormModal/FormModal.component.ts":
+/*!**************************************************!*\
+  !*** ./src/app/FormModal/FormModal.component.ts ***!
+  \**************************************************/
+/*! exports provided: FormModalComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FormModalComponent", function() { return FormModalComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _models_employee__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../_models/employee */ "./src/app/_models/employee.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var FormModalComponent = /** @class */ (function () {
+    function FormModalComponent(activeModal, formBuilder) {
+        this.activeModal = activeModal;
+        this.formBuilder = formBuilder;
+        this.newEmployee = new _models_employee__WEBPACK_IMPORTED_MODULE_3__["Employee"]();
+        this.createForm();
+    }
+    FormModalComponent.prototype.createForm = function () {
+        this.myForm = this.formBuilder.group({
+            username: '',
+            password: ''
+        });
+    };
+    FormModalComponent.prototype.submitForm = function () {
+        console.log(this.newEmployee);
+        this.newEmployee.id = 0;
+        this.activeModal.close(this.newEmployee);
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewChild"])('addForm'),
+        __metadata("design:type", _angular_forms__WEBPACK_IMPORTED_MODULE_2__["NgForm"])
+    ], FormModalComponent.prototype, "addForm", void 0);
+    FormModalComponent = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+            selector: 'app-FormModal',
+            template: __webpack_require__(/*! ./FormModal.component.html */ "./src/app/FormModal/FormModal.component.html"),
+            styles: [__webpack_require__(/*! ./FormModal.component.css */ "./src/app/FormModal/FormModal.component.css")]
+        }),
+        __metadata("design:paramtypes", [_ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_1__["NgbActiveModal"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"]])
+    ], FormModalComponent);
+    return FormModalComponent;
 }());
 
 
@@ -861,6 +972,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _EmployeeChart_employeechart_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./EmployeeChart/employeechart.component */ "./src/app/EmployeeChart/employeechart.component.ts");
 /* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
 /* harmony import */ var ngx_toastr__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ngx-toastr */ "./node_modules/ngx-toastr/fesm5/ngx-toastr.js");
+/* harmony import */ var _FormModal_FormModal_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./FormModal/FormModal.component */ "./src/app/FormModal/FormModal.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -884,6 +996,10 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+// import { Store } from '@ngrx/store';
+// import { StoreModule } from '@ngrx/store';
+// import { employeeReducers } from './Store/luxSoft.reducer';
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
@@ -893,27 +1009,33 @@ var AppModule = /** @class */ (function () {
                 _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
                 _Employee_employee_component__WEBPACK_IMPORTED_MODULE_13__["EmployeeComponent"],
                 _EmployeeChart_employeechart_component__WEBPACK_IMPORTED_MODULE_14__["EmployeeChartComponent"],
+                _FormModal_FormModal_component__WEBPACK_IMPORTED_MODULE_17__["FormModalComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"],
                 _angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormsModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_5__["ReactiveFormsModule"],
                 ngx_bootstrap__WEBPACK_IMPORTED_MODULE_3__["PaginationModule"].forRoot(),
-                ag_grid_angular__WEBPACK_IMPORTED_MODULE_9__["AgGridModule"].withComponents([]),
+                ag_grid_angular__WEBPACK_IMPORTED_MODULE_9__["AgGridModule"].withComponents(),
                 ngx_bootstrap__WEBPACK_IMPORTED_MODULE_3__["BsDropdownModule"].forRoot(),
                 _angular_router__WEBPACK_IMPORTED_MODULE_7__["RouterModule"].forRoot(_routes__WEBPACK_IMPORTED_MODULE_8__["appRoutes"]),
                 ngx_bootstrap__WEBPACK_IMPORTED_MODULE_3__["TabsModule"].forRoot(),
                 ng2_charts__WEBPACK_IMPORTED_MODULE_12__["ChartsModule"],
                 _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_11__["NgbModule"].forRoot(),
                 _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_15__["BrowserAnimationsModule"],
-                ngx_toastr__WEBPACK_IMPORTED_MODULE_16__["ToastrModule"].forRoot()
+                ngx_toastr__WEBPACK_IMPORTED_MODULE_16__["ToastrModule"].forRoot(),
             ],
             providers: [
                 _services_error_interceptor__WEBPACK_IMPORTED_MODULE_6__["ErrorInterceptorProvider"],
                 _services_employee_service__WEBPACK_IMPORTED_MODULE_10__["EmployeeService"]
+                // Store
             ],
             bootstrap: [
                 _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]
+            ],
+            entryComponents: [
+                _FormModal_FormModal_component__WEBPACK_IMPORTED_MODULE_17__["FormModalComponent"]
             ]
         })
     ], AppModule);
@@ -1008,7 +1130,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! E:\POC\LoxSoft_Coding\Luxoft-Coding-Task\LuxSoft-SPA\src\main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! E:\POC\LoxSoft_Coding\Luxoft-Coding-Task\luxsoft-spa\src\main.ts */"./src/main.ts");
 
 
 /***/ })

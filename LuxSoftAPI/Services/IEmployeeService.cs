@@ -11,8 +11,8 @@ namespace Server.Services
     public interface IEmployeeService
     {
         Task<EmployeeViewModel> GetEmployees(Pagination emp);
-        Task<EmployeeViewModel> SaveEmployee(EmployeeDetailsModel Emp);
-        Task<EmployeeViewModel> DeleteEmployee(EmployeeDetailsModel Emp);
+        Task<bool> SaveEmployee(EmployeeDetailsModel Emp);
+        Task<bool> DeleteEmployee(EmployeeDetailsModel Emp);
         Task<EmployeeStatistics> GetStatistics();
     }
 }
