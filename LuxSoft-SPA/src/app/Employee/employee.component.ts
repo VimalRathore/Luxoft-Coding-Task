@@ -106,10 +106,11 @@ export class EmployeeComponent implements OnInit {
 
   columnDefs = [
     { headerName: 'Employee Id', field: 'id', editable: false, width: 100, suppressSizeToFit: true, sortable: true },
-    { headerName: 'First Name', field: 'firstName', editable: true, width: 165, suppressSizeToFit: true, sortable: true },
-    { headerName: 'Last Name', field: 'lastName', editable: true, width: 165, suppressSizeToFit: true, sortable: true },
+    { headerName: 'First Name', field: 'firstName', editable: true, width: 150, suppressSizeToFit: true, sortable: true },
+    { headerName: 'Last Name', field: 'lastName', editable: true, width: 150, suppressSizeToFit: true, sortable: true },
     { headerName: 'Age', field: 'age', editable: true, width: 80, suppressSizeToFit: true, sortable: true },
     { headerName: 'Gender', field: 'gender', editable: true, width: 80, suppressSizeToFit: true, sortable: true },
+    { headerName: 'Email Id', field: 'email', editable: true, width: 210, suppressSizeToFit: true, sortable: true },
     { headerName: 'City', field: 'city', editable: true, width: 160, suppressSizeToFit: true, sortable: true },
     { headerName: 'Country', field: 'country', editable: true, width: 160, suppressSizeToFit: true, sortable: true },
   ];
