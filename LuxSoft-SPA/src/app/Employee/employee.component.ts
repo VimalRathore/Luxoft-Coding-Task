@@ -20,7 +20,7 @@ import { FormModalComponent } from '../FormModal/FormModal.component';
 })
 
 export class EmployeeComponent implements OnInit {
-  private rowSelection;
+  public rowSelection;
   private gridApi;
   private gridColumnApi;
   model: EmployeeViewModel;
