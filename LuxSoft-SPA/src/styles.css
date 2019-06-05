@@ -8,6 +8,9 @@
 @import "..\node_modules\ag-grid-community\dist\styles\ag-theme-dark.css";
 
 
+.ag-header-cell-text{
+  color:chartreuse;
+}
 .divider-text {
   position: relative;
   text-align: center;

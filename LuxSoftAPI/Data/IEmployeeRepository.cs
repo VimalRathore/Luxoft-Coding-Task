@@ -12,7 +12,6 @@ namespace Server.Data
         void AddEmployee(Employee Emp);
         void UpdateEmployee(Employee Emp);
         void DeleteEmployee(Employee Emp);
-
         IQueryable<Employee> GetEmployeesForStats();
         Task<bool> SaveAll();
     }

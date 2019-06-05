@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../_services/employee.service';
-import { BarChartData } from '../_models/barChartData';
-import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-employeechart',
@@ -28,7 +26,6 @@ export class EmployeeChartComponent implements OnInit {
 
   }
 
-  // tslint:disable-next-line:member-ordering
   public doughnutColors:Array<any>= [
     { // dark grey
          backgroundColor: '#F97300',
@@ -52,18 +49,15 @@ export class EmployeeChartComponent implements OnInit {
   pie = 'pie';
   doughnut = 'doughnut';
 
-  // event on pie chart slice hover
   public chartHovered(e: any): void {
     console.log(e);
   }
 
-  // tslint:disable-next-line:member-ordering
   public barChartOptions = {
     scaleShowVerticalLines: false,
     responsive: true
   };
 
-  // tslint:disable-next-line:member-ordering
   public barChartLabels : string[];
   public barChartType = 'bar';
   public barChartLegend = true;

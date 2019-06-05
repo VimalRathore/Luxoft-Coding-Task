@@ -104,7 +104,6 @@ export class EmployeeComponent implements OnInit {
     this.gridColumnApi = params.columnApi;
   }
 
-  // tslint:disable-next-line:member-ordering
   columnDefs = [
     { headerName: 'Employee Id', field: 'id', editable: false, width: 100, suppressSizeToFit: true, sortable: true },
     { headerName: 'First Name', field: 'firstName', editable: true, width: 165, suppressSizeToFit: true, sortable: true },
@@ -116,7 +115,6 @@ export class EmployeeComponent implements OnInit {
   ];
 
   onRemoveSelected() {
-    // tslint:disable-next-line:prefer-const
     var selectedData = this.gridApi.getSelectedRows();
     if (selectedData.length < 1) {
       this.toastr.info('Please select the records to be deleted.');

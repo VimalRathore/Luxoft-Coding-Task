@@ -10,12 +10,7 @@ namespace Server.Data
 {
     public class EmployeeRepository : IEmployeeRepository
     {
-        //private readonly DataContext _context;
         private readonly NorthwindContext _northwindContext;
-        // public EmployeeRepository(DataContext context)
-        // {
-        //     _context = context;
-        // }
 
         public EmployeeRepository(NorthwindContext northwindContext)
         {
@@ -26,12 +21,6 @@ namespace Server.Data
         {
             return _northwindContext.Employees.Where(x => !x.IsDeleted).AsQueryable();
         }
-        // public async void AddEmployee(Employee Emp)
-        // {
-        //     Emp.YearOfJoining = DateTime.Now.Year;
-        //     Emp.CreatedDate = DateTime.Now;
-        //     _northwindContext.Add(Emp);
-        // }
 
           public void AddEmployee(Employee Emp)
         {
@@ -57,11 +46,11 @@ namespace Server.Data
             return await _northwindContext.SaveChangesAsync() > 0;
         }
 
-        public IQueryable<Employee> GetEmployeesForStats()
+         public IQueryable<Employee> GetEmployeesForStats()
         {
             return _northwindContext.Employees;
         }
 
-       
+
     }
 }
