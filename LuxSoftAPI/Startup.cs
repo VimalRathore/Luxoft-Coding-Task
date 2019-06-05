@@ -42,7 +42,6 @@ namespace Server
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
             services.AddScoped<IEmployeeService, EmployeeService>();
 
-            //services.AddDbContext<DataContext>(x => x.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDbContext<NorthwindContext>(options =>
             options.UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;DataBase=Northwind;Integrated Security=True;Connect Timeout=30"));
 
